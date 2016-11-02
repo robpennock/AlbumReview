@@ -1,0 +1,7 @@
+<h2><%= @album.title %></h2>
+<h2><%= @album.artist %></h2>
+<p><%= @album.description %></p>
+
+<%= link_to "Back", root_path %>
+<%= link_to "Edit", edit_album_path(@album) %>
+<%= link_to "Delete", album_path(@album), method: :delete, data: { confirm: "Are you sure you wish to delete this album?" }%>

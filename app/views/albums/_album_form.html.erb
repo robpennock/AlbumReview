@@ -1,0 +1,6 @@
+<%= simple_form_for @album do |f| %>
+	<%= f.input :title, label: "Album Title"  %>
+	<%= f.input :artist, label: "Artist"%>
+	<%= f.input :description, label: "Album Description" %>
+	<%= f.button :submit %>
+<% end %>

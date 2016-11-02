@@ -1,0 +1,6 @@
+<h1>index page</h1>
+<% @albums.each do |album| %>
+	<h2><%= link_to album.title, album_path(album) %>, <%= album.artist %> </h2>
+<% end %>
+
+<%= link_to "Add Album", new_album_path %>
