@@ -1,7 +1,15 @@
 <h2><%= @album.title %></h2>
 <h2><%= @album.artist %></h2>
+<!-- must have 'belongs_to :genre' in album.rb for genre to be accessable accross controllers -->
+<h3>Genre: <%= @album.genre.name %></h3>
 <p><%= @album.description %></p>
 
 <%= link_to "Back", root_path %>
-<%= link_to "Edit", edit_album_path(@album) %>
-<%= link_to "Delete", album_path(@album), method: :delete, data: { confirm: "Are you sure you wish to delete this album?" }%>
+<!-- Make sure a user is signed in before they can access update and destroy functionality-->
+<% if user_signed_in? %>
+<!-- Edit and Delete should only be available to the user who created the album-->
+	<% if @album.user_id == current_user.id %>
+		<%= link_to "Edit", edit_album_path(@album) %>
+		<%= link_to "Delete", album_path(@album), method: :delete, data: { confirm: "Are you sure you wish to delete this album?" }%>
+	<% end %>
+<% end %>

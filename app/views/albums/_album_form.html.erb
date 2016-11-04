@@ -1,4 +1,6 @@
-<%= simple_form_for @album do |f| %>
+<%= simple_form_for @album, :html => { :multipart => true } do |f| %>
+	<!-- select a genre_id from options genereated by @genres....defined in the albums controller-->
+	<%= select_tag(:genre_id, options_for_select(@genres), :prompt => "Select Genre")%>
 	<%= f.input :title, label: "Album Title"  %>
 	<%= f.input :artist, label: "Artist"%>
 	<%= f.input :description, label: "Album Description" %>

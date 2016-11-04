@@ -8,6 +8,40 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<%= link_to "Album Review", root_path, class: "navbar-brand" %>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><%= link_to "Sign Up", new_user_registration_path %></li>
+				<% if user_signed_in? %>
+					<li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
+				<% else %>
+					<li> <%= link_to "Login", new_user_session_path %> </li>
+				<% end %>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Genres<span class="caret"></span></a>
+					<ul class = "dropdown-menu" role = "menu">
+						<% Genre.all.each do |g| %>
+						<!-- generate links based on genre name, route click to albums_path (index action) based on genre name params-->
+						<% #blow set li to active if the passed genre [name] params == current iterations genre name%>
+						<li class="<%= 'active' if params[:genre] == g.name %>">
+							<%= link_to g.name, albums_path(genre: g.name ), class: "link" %>
+						</li>
+						<% end %>
+					</ul>
+				</li>
+				<li> <%= link_to "Add Album", new_album_path %> 
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
 <%= yield %>
 
 </body>

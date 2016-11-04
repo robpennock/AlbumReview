@@ -1,6 +1,14 @@
-<h1>index page</h1>
-<% @albums.each do |album| %>
-	<h2><%= link_to album.title, album_path(album) %>, <%= album.artist %> </h2>
+<!-- only display current Genre if genre pramams have been passed-->
+<% if params[:genre].blank? != true %>
+	<h1 class="current_genre">Genre: <%= params[:genre] %></h1>
 <% end %>
 
-<%= link_to "Add Album", new_album_path %>
+<% if @albums.count == 0 %>
+	<h2>There are currently no albums in this category</h2>
+<% else %>
+	<% @albums.each do |album| %>
+		<h2><%= link_to album.title, album_path(album) %>, <%= album.artist %> </h2>
+	<% end %>
+
+	<%= link_to "Add Album", new_album_path %>
+<% end %>
