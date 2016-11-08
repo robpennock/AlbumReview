@@ -1,9 +1,20 @@
-<h2><%= @album.title %></h2>
-<h2><%= @album.artist %></h2>
-<!-- must have 'belongs_to :genre' in album.rb for genre to be accessable accross controllers -->
-<h3>Genre: <%= @album.genre.name %></h3>
-<p><%= @album.description %></p>
-
+<div class="row">
+	<div class="col-md-4">
+		<%= image_tag(@album.album_img.url(:album_show), :class => "album-show")%>
+	</div>
+	<div class="col-md-8">
+		<h2><%= @album.title %></h2>
+		<h2><%= @album.artist %></h2>
+		<!-- must have 'belongs_to :genre' in album.rb for genre to be accessable accross controllers -->
+		<h3>Genre: <%= @album.genre.name %></h3>
+		<p><%= @album.description %></p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<!-- future reviews here-->
+	</div>
+</div>
 <%= link_to "Back", root_path %>
 <!-- Make sure a user is signed in before they can access update and destroy functionality-->
 <% if user_signed_in? %>

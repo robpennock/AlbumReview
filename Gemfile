@@ -13,7 +13,8 @@ gem 'simple_form', '~> 3.3', '>= 3.3.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 #user sign in and out; must use 3.5.1 as 4.* cant install
 gem 'devise', '~> 3.5.1'
-
+#for image functionality
+gem 'paperclip', '~> 4.2.1'
 
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

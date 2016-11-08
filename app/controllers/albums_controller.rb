@@ -59,7 +59,8 @@ class AlbumsController < ApplicationController
 	private
 
 		def album_params
-			params.require(:album).permit(:title, :artist, :description, :genre_id)
+												#album genre_id and album_img will not be build unless required here
+			params.require(:album).permit(:title, :artist, :description, :genre_id, :album_img)
 		end
 
 		def find_album

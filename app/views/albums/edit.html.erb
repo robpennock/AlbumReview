@@ -3,6 +3,7 @@
 <%= simple_form_for @album, :html => { :multipart => true } do |f| %>
 	<!-- select a genre_id from options genereated by @genres....fill with enumerated @categories -->
 	<%= f.select(:genre_id, @genres) %>
+	<%= f.file_field :album_img %>
 	<%= f.input :title, label: "Album Title"  %>
 	<%= f.input :artist, label: "Artist"%>
 	<%= f.input :description, label: "Album Description" %>
