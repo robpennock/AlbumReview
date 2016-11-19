@@ -9,7 +9,7 @@ class Album < ActiveRecord::Base
 	#below used to associate paperclip based album_img with Album model
 	#album_img added to Book via migration
 								#album_index for images passed thru index 	#album_show for images on show pages
-	has_attached_file :album_img, styles: { album_index: "250x250>", album_show: "200x200>" }, default_url: "/images/:style/missing.png"
+	has_attached_file :album_img, styles: { album_index: "350x350>", album_show: "250x250>" }, default_url: "/images/:style/missing.png"
 	validates_attachment_content_type :album_img, content_type: /\Aimage\/.*\z/
 
 
