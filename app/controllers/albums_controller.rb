@@ -1,6 +1,8 @@
 class AlbumsController < ApplicationController
 	#method below absolutely necessary to use find_album when necessary
 	before_action :find_album, only: [:show, :edit, :update, :destroy]
+	#prevents non-users from creating or editing
+	before_action :authenticate_user!, only: [:new, :edit]
 
 	def index
 		#order albums by decsending order based on creation date
@@ -33,6 +35,12 @@ class AlbumsController < ApplicationController
 	end
 
 	def show
+		if @album.reviews.blank?
+			@average_review = 0
+		else
+			#display average rating of book reviews
+			@average_review = @album.reviews.average(:rating).round(2)
+		end
 	end
 
 	def edit
