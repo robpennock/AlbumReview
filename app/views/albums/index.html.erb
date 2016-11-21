@@ -2,16 +2,22 @@
 <% if params[:genre].blank? != true %>
 	<h1 class="current_genre">Genre: <%= params[:genre] %></h1>
 <% end %>
-<div class="row">
+<div>
+	<div>
 	<% if @albums.count == 0 %>
 		<h2>There are currently no albums in this category</h2>
 	<% else %>
 		<% @albums.each do |album| %>
 			<div class="col-md-3">
-				<% #remember that the .each is being performed on an album object %>
-				<%= link_to image_tag(album.album_img, :class => "img-responsive"), album_path(album.id) %>
+				<div>
+					<% #remember that the .each is being performed on an album object %>
+					<%= link_to image_tag(album.album_img, :class => "img-responsive index-tile shadow"), album_path(album.id) %>
+				</div>
 			</div>	
 		<% end %>
+	</div>
 </div>
-<%= link_to "Add Album", new_album_path, :class => "btn btn-default" %>
-<% end %>
+	<% end %>
+<div class="row">
+	<%= link_to "Add Album", new_album_path, :class => "btn btn-default" %>
+</div>
