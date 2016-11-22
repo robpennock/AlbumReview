@@ -7,17 +7,21 @@
 	<% if @albums.count == 0 %>
 		<h2>There are currently no albums in this category</h2>
 	<% else %>
-		<% @albums.each do |album| %>
-			<div class="col-md-3">
-				<div>
-					<% #remember that the .each is being performed on an album object %>
+		<%# nested loop populates rows by 3 album objects%>
+		<% @albums.each_slice(3) do |albums| %>
+			<div class="row">
+				<% albums.each do |album| %>
+				<div class="col-md-4">
 					<%= link_to image_tag(album.album_img, :class => "img-responsive index-tile shadow"), album_path(album.id) %>
 				</div>
-			</div>	
+				<% end %>
+			</div>
 		<% end %>
 	</div>
 </div>
 	<% end %>
+<div class="row"><br></div>
 <div class="row">
 	<%= link_to "Add Album", new_album_path, :class => "btn btn-default" %>
 </div>
+
